@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo -e "\033[0;32mCode Security Checks (bandit):\033[0m"
+echo
+poetry run bandit --quiet -r src/bayan_bot
+echo "----------"
+
+echo -e "\033[0;32mDependencies Security Checks (safety):\033[0m"
+echo
+poetry export --without-hashes --format=requirements.txt > requirements.txt
+# Ignoring sqlalchemy leak cleartext passwords problem, since it does not affect us atm
+./scripts/safety-2.3.2 check --ignore=51668 --full-report -r requirements.txt
+rm requirements.txt
+echo "----------"
+
+echo -e "\033[0;32mChecking outdated dependencies (pip):\033[0m"
+echo
+poetry run pip list --outdated
+echo "----------"

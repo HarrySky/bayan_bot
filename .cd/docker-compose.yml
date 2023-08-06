@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  bayan_bot:
+    image: bayan_bot:latest
+    container_name: bayan_bot
+    environment:
+      - BOT_TOKEN=123
+      - GROUP_CHAT_ID=-1
+      - DATABASE_URL=sqlite:////opt/bot/chat_name.sqlite
+    volumes:
+      - /opt/chat_name:/opt/bot
+    network_mode: bridge

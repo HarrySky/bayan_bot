@@ -1,0 +1,4 @@
+#!/bin/bash
+
+alembic -c /opt/alembic/alembic.ini upgrade head
+exec run_bayan_bot

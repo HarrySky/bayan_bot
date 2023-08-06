@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Clean up files and folders
+./scripts/clean
+
+# Install
+poetry install --with security,typecheck,lint
+# Install pre-commit hooks
+poetry run pre-commit install

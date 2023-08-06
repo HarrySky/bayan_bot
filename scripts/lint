@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo -e "\033[0;32mLinting (black):\033[0m"
+echo
+poetry run black --target-version=py311 src/bayan_bot
+echo "----------"
+
+echo -e "\033[0;32mSorting Imports (isort):\033[0m"
+echo
+poetry run isort --project=bayan_bot src/bayan_bot
+echo "----------"
+
+echo -e "\033[0;32mStatic Types Check After Linting (mypy):\033[0m"
+echo
+poetry run mypy src/bayan_bot
+echo "----------"
+
+echo -e "\033[0;32mRunning Code Style Check (flake8):\033[0m"
+echo
+poetry run flake8 src/bayan_bot
+echo "----------"

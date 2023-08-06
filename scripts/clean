@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+rm -rf build/ src/*.egg-info/ dist/ .mypy_cache/
+find . -path ./venv -prune -o -type d -name __pycache__ -exec rm -r {} \+
+find . -path ./venv -prune -o -type f -name '*.c' -exec rm {} \+
+find . -path ./venv -prune -o -type f -name '*.so' -exec rm {} \+
+find . -path ./venv -prune -o -type f -name '*.html' -exec rm {} \+

@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+function cleanup {
+    echo "Cleaning up"
+    rm -f requirements.txt
+}
+trap "cleanup" EXIT
+
+poetry run bandit --quiet -r src/bayan_bot
+poetry export --without-hashes --format=requirements.txt > requirements.txt
+# Ignoring sqlalchemy leak cleartext passwords problem, since it does not affect us atm
+./scripts/safety-2.3.2 check --ignore=51668 --full-report -r requirements.txt
