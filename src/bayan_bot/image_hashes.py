@@ -25,7 +25,7 @@ class ImageChecker:
         """Loads hashes from database"""
         query = select(ImageHashModel.hash)
         hashes = await self.database.fetch_all(query)
-        self.image_hashes = [
+        self.hashes = [
             ImageHash(hash.hash) for hash in hashes  # type: ignore[attr-defined]
         ]
 
