@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+echo "Building bayan_bot:latest Docker image"
+sudo docker build -f .cd/Dockerfile -t bayan_bot:latest .

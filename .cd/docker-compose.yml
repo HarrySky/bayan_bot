@@ -7,7 +7,7 @@ services:
     environment:
       - BOT_TOKEN=123
       - GROUP_CHAT_ID=-1
-      - DATABASE_URL=sqlite:////opt/bot/chat_name.sqlite
+      - DATABASE_URL=sqlite:////opt/bot/CHAT_NAME.sqlite
     volumes:
-      - /opt/chat_name:/opt/bot
+      - /opt/CHAT_NAME:/opt/bot
     network_mode: bridge
