@@ -21,7 +21,7 @@ async def _main() -> None:
     logger.info("Initializing database")
     database = await init_database()
 
-    checker = ImageChecker(database, cutoff=5)
+    checker = ImageChecker(database, cutoff=3)
     logger.info("Loading hashes from database")
     await checker.load_hashes()
 
