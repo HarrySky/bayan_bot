@@ -98,6 +98,14 @@ class KabakBot:
             logger.debug("Message not from real person, ignoring")
             return False
 
+        if (
+            "forward_date" in message_data
+            or "forward_from" in message_data
+            or "forward_from_chat" in message_data
+        ):
+            logger.debug("Message is forwarded, ignoring")
+            return False
+
         return True
 
     async def get_messages(self) -> list[MessageData]:
