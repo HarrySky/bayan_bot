@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tg_bayan_bot"
-version = "0.3.2"
+version = "0.3.3"
 description = "Bayan Bot - Telegram group chat bot that detects similar memes"
 readme = "README.md"
 authors = [
@@ -28,19 +28,19 @@ ImageHash = { version = "4.3.1", source = "PyPI" }
 # Fast async event loop
 uvloop = { version = "0.17.0", source = "PyPI" }
 # For SQLite
-databases = { version = "0.7.0", source = "PyPI" }
+databases = { version = "0.8.0", source = "PyPI" }
 aiosqlite = { version = "0.19.0", source = "PyPI" }
-alembic = { version = "1.11.2", source = "PyPI" }
+alembic = { version = "1.12.0", source = "PyPI" }
 # For HTTP requests
-httpx = { version = "0.24.1", source = "PyPI" }
+httpx = { version = "0.25.0", source = "PyPI" }
 h2 = { version = "4.1.0", source = "PyPI" }
 # For richer logging output
-rich = { version = "13.5.2", source = "PyPI" }
+rich = { version = "13.5.3", source = "PyPI" }
 # For some Pydantic types
-typing-extensions = { version = "4.7.1", source = "PyPI"}
+typing-extensions = { version = "4.8.0", source = "PyPI"}
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = { version = "3.3.3", source = "PyPI" }
+pre-commit = { version = "3.4.0", source = "PyPI" }
 
 [tool.poetry.group.security]
 optional = true
@@ -54,8 +54,8 @@ optional = true
 
 # Tools for static type check analysis
 [tool.poetry.group.typecheck.dependencies]
-mypy = { version = "1.4.1", source = "PyPI" }
-types-Pillow = { version = "10.0.0.2", source = "PyPI" }
+mypy = { version = "1.5.1", source = "PyPI" }
+types-Pillow = { version = "10.0.0.3", source = "PyPI" }
 
 [tool.poetry.group.lint]
 optional = true
@@ -64,7 +64,7 @@ optional = true
 [tool.poetry.group.lint.dependencies]
 # Flake8 with extensions
 flake8 = { version = "6.1.0", source = "PyPI" }
-flake8-bugbear = { version = "23.7.10", source = "PyPI" }
+flake8-bugbear = { version = "23.9.16", source = "PyPI" }
 flake8-cognitive-complexity = { version = "0.1.0", source = "PyPI" }
 flake8-comprehensions = { version = "3.14.0", source = "PyPI" }
 flake8-fixme = { version = "1.1.1", source = "PyPI" }
@@ -72,7 +72,7 @@ flake8-pie = { version = "0.16.0", source = "PyPI" }
 flake8-simplify = { version = "0.20.0", source = "PyPI" }
 pep8-naming = { version = "0.13.3", source = "PyPI" }
 # Code style enforcing
-black = { version = "23.7.0", source = "PyPI" }
+black = { version = "23.9.1", source = "PyPI" }
 isort = { version = "5.12.0", source = "PyPI" }
 
 [tool.poetry.scripts]
