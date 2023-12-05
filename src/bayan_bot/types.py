@@ -26,6 +26,7 @@ MessageData = TypedDict(
         "from": Required[FromData],
         "message_id": Required[int],
         "photo": NotRequired[list[PhotoData]],
+        "text": NotRequired[str],
     },
 )
 

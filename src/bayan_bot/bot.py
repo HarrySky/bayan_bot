@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from io import BytesIO
 from logging import getLogger
 from typing import Any
@@ -26,6 +27,26 @@ def filter_messages_with_photos(messages: list[MessageData]) -> list[MessageData
         messages_with_photos.append(message)
 
     return messages_with_photos
+
+
+_makar_regex = re.compile(r".*макар.*", re.IGNORECASE)
+
+
+def filter_messages_with_makar_mention(
+    messages: list[MessageData],
+) -> list[MessageData]:
+    """Filters out messages that don't mention Makar
+    from all bot's relevant messages
+    """
+    messages_with_makar: list[MessageData] = []
+    for message in messages:
+        if not re.match(_makar_regex, message.get("text", "")):
+            logger.debug("Message without Makar mention, ignoring")
+            continue
+
+        messages_with_makar.append(message)
+
+    return messages_with_makar
 
 
 class KabakBot:
@@ -171,6 +192,18 @@ class KabakBot:
             },
         )
 
+    async def send_marat_correction(self, message: MessageData) -> None:
+        """Sends correction as response to message that mentions Makar"""
+        logger.warning("Sending correction to: %s", message["message_id"])
+        await self.api_client.get(
+            "/sendMessage",
+            params={
+                "chat_id": self.chat_id,
+                "reply_to_message_id": message["message_id"],
+                "text": "наверное ты имел в виду 'Марат'?🤓",
+            },
+        )
+
     async def loop_iteration(self) -> None:
         messages = await self.get_messages()
         if not messages:
@@ -185,3 +218,8 @@ class KabakBot:
 
             logger.info("Duplicate photo encountered")
             await self.send_warning(message)
+
+        messages_with_makar = filter_messages_with_makar_mention(messages)
+        for message in messages_with_makar:
+            logger.info("Correcting user about Makar")
+            await self.send_marat_correction(message)
