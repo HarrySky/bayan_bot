@@ -29,7 +29,7 @@ def filter_messages_with_photos(messages: list[MessageData]) -> list[MessageData
     return messages_with_photos
 
 
-_makar_regex = re.compile(r".*макар.*", re.IGNORECASE)
+_makar_regex = re.compile(r".*макар.*", re.IGNORECASE | re.DOTALL)
 
 
 def filter_messages_with_makar_mention(
